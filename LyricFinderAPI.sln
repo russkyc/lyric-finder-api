@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LyricFinderAPI", "LyricFinderAPI\LyricFinderAPI.csproj", "{0D1DAC2B-5726-4878-9342-FD47B756AAEC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0D1DAC2B-5726-4878-9342-FD47B756AAEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D1DAC2B-5726-4878-9342-FD47B756AAEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D1DAC2B-5726-4878-9342-FD47B756AAEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D1DAC2B-5726-4878-9342-FD47B756AAEC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
