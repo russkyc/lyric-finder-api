@@ -9,16 +9,15 @@ A .NET 7 WebAPI for finding lyrics from web providers.
 - Genius
 - Musixmatch
 
-### Build Docker Container
-
+### Get Docker Container from DockerHub
 ```
-dotnet publish --os linux --arch x64 -p:PublishProfile=DefaultContainer
+docker pull russkyc/web-apis:lyricfinderapi
 ```
 
 ### Run Docker Container
 
 ```
-docker run -p 5000:80 lyricfinderapi:1.0.4
+docker run -p 5000:80 russkyc/web-apis:lyricfinderapi
 ```
 
 ### API
