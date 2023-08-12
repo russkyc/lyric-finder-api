@@ -4,6 +4,8 @@
 A .NET 7 WebAPI for finding lyrics from web providers.
 </p>
 
+![](https://raw.githubusercontent.com/russkyc/lyric-finder-api/master/.resources/images/Swagger%20UI.png)
+
 ### Supported Providers
 - AZLyrics
 - Genius
