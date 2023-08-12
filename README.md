@@ -20,3 +20,15 @@ dotnet publish --os linux --arch x64 -p:PublishProfile=DefaultContainer
 ```
 docker run -p 5000:80 lyricfinderapi:1.0.4
 ```
+
+### API
+
+#### POST
+endpoint: `/api/LyricFinder/{request}`
+body schema:
+```json
+{
+  "artist": "string",
+  "song": "string"
+}
+```
