@@ -31,8 +31,72 @@ namespace LyricFinderAPI.Controllers
     [ApiController]
     public class LyricFinderController : ControllerBase
     {
+        [HttpGet("{providers}/{artist}/{song}")]
+        public async Task<IActionResult> GetLyricsFromProvider(ILyricsScraperClient client, string providers, string artist, string song)
+        {
+            if (providers.Contains("azlyrics"))
+            {
+                client
+                    .WithAZLyrics();
+            }
+            
+            if (providers.Contains("genius"))
+            {
+                client
+                    .WithGenius();
+            }
+            
+            if (providers.Contains("musixmatch"))
+            {
+                client
+                    .WithMusixmatch();
+            }
+            
+            var request = new ArtistAndSongSearchRequest(artist: artist, song: song);
+            var searchResult = await client.SearchLyricAsync(request);
+
+            if (searchResult.IsEmpty())
+            {
+                return NotFound();
+            }
+            
+            var lyricInfo = new LyricInfo
+            {
+                Title = request.Song,
+                Author = request.Artist,
+                Lyric = searchResult.LyricText
+            };
+            
+            return Ok(lyricInfo);
+        }
+        
+        [HttpGet("{artist}/{song}")]
+        public async Task<IActionResult> GetLyrics(ILyricsScraperClient client, string artist, string song)
+        {
+            client
+                .WithAZLyrics()
+                .WithGenius()
+                .WithMusixmatch();
+            
+            var request = new ArtistAndSongSearchRequest(artist: artist, song: song);
+            var searchResult = await client.SearchLyricAsync(request);
+
+            if (searchResult.IsEmpty())
+            {
+                return NotFound();
+            }
+            
+            var lyricInfo = new LyricInfo
+            {
+                Title = request.Song,
+                Author = request.Artist,
+                Lyric = searchResult.LyricText
+            };
+            
+            return Ok(lyricInfo);
+        }
         [HttpPost("{request}")]
-        public async Task<IActionResult> Post(ILyricsScraperClient client, ArtistAndSongSearchRequest request)
+        public async Task<IActionResult> PostSearchRequest(ILyricsScraperClient client, ArtistAndSongSearchRequest request)
         {
             
             var searchResult = await client.SearchLyricAsync(request);

@@ -24,9 +24,19 @@ docker run -p 5000:80 russkyc/web-apis:lyricfinderapi
 
 ### API
 
-#### POST
-endpoint: `/api/LyricFinder/{request}`
-body schema:
+---
+
+#### GET Endpoint
+
+Find on All Providers: `/api/LyricFinder/{artist}/{song}`
+  - finds song from all providers
+
+Find on Specific Providers: `/api/LyricFinder/{providers}/{artist}/{song}`
+  - finds song from defined providers eg; `genius` or `genius&azlyrics` etc
+
+#### POST Endpoint
+Find using Request: `/api/LyricFinder/{request}`
+  - finds song based on post body content:
 ```json
 {
   "artist": "string",

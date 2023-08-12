@@ -30,10 +30,9 @@ public static class AppServices
     // Add LyricScraper Client
     public static void AddLyricScraper(this IServiceCollection services)
     {
-        services.Add(new ServiceDescriptor(typeof(ILyricsScraperClient), new LyricsScraperClient()
-            .WithAZLyrics()
-            .WithGenius()
-            .WithMusixmatch()
-        ));
+        services.Add(
+            new ServiceDescriptor(typeof(ILyricsScraperClient),
+            typeof(LyricsScraperClient),
+            ServiceLifetime.Transient));
     }
 }
