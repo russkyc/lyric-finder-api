@@ -73,8 +73,7 @@ namespace LyricFinderAPI.Controllers
         [HttpGet("{artist}/{song}")]
         public async Task<IActionResult> GetLyrics(ILyricsScraperClient client, string artist, string song)
         {
-            client
-                .WithAZLyrics()
+            client.WithAZLyrics()
                 .WithGenius()
                 .WithMusixmatch();
             
@@ -98,6 +97,9 @@ namespace LyricFinderAPI.Controllers
         [HttpPost("{request}")]
         public async Task<IActionResult> PostSearchRequest(ILyricsScraperClient client, ArtistAndSongSearchRequest request)
         {
+            client.WithAZLyrics()
+                .WithGenius()
+                .WithMusixmatch();
             
             var searchResult = await client.SearchLyricAsync(request);
 
